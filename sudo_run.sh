@@ -46,6 +46,10 @@ if [ ! -f /etc/init.d/noip2.sh ]; then
   popd
 fi
 
+# git config
+su luzi82 -c "git config --global user.name Luzi82"
+su luzi82 -c "git config --global user.email luzi82@gmail.com"
+
 # final prompt
 echo may need reboot
 echo may need to update /etc/resolv.conf
