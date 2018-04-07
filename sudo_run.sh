@@ -59,6 +59,9 @@ fi
 su luzi82 -c "git config --global user.name Luzi82"
 su luzi82 -c "git config --global user.email luzi82@gmail.com"
 
+# insert cron
+cp ${MY_DIR}/res/crond /etc/cron.d/luzi82_debian
+
 # final prompt
 echo may need reboot
 echo may need to update /etc/resolv.conf
