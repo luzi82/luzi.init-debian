@@ -2,6 +2,8 @@
 
 set -e
 
+HOSTNAME=`hostname --long`
+
 apt-get update
 apt-get dist-upgrade -y
 apt-get autoremove -y
@@ -15,10 +17,11 @@ usermod -aG sudo luzi82
 mkdir -p /home/luzi82/.ssh
 cp authorized_keys /home/luzi82/.ssh/
 if [ ! -f /home/luzi82/.ssh/id_rsa ]; then
-  ssh-keygen -f /home/luzi82/.ssh/id_rsa -t rsa -N ''
+  ssh-keygen -f /home/luzi82/.ssh/id_rsa -t rsa -N '' -C "luzi82@${HOSTNAME}"
 fi
 chmod 755 /home/luzi82/.ssh
 chmod 644 /home/luzi82/.ssh/authorized_keys
+chown luzi82:luzi82 -R /home/luzi82/.ssh
 
 # ssh NoDNS
 sed -i 's/UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
